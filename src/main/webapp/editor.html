@@ -5,41 +5,65 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Editor</title>
   <style type="text/css" media="screen">
-    body {
-        overflow: hidden;
-    }
-    
-    #editor { 
-        border-top-style:solid;
-        border-top-width:1px;
-        margin: 0;
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 70%;
-        width: 100%;
-    }
-    #logs { 
-        border-top-style:solid;
-        border-top-width:1px;
-        margin: 0;
-        position: absolute;
-        top: 70%;
-        left: 0;
-        height: 30%;
-        width: 100%;
-    }
-  </style>
+body {
+    overflow: hidden;
+}
+
+#editor { 
+    border-top-style:solid;
+    border-top-width:1px;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 70%;
+    width: 100%;
+}
+#logs { 
+    border-top-style:solid;
+    border-top-width:1px;
+    margin: 0;
+    position: absolute;
+    top: 70%;
+    left: 0;
+    height: 30%;
+    width: 100%;
+}
+#all {
+  position:absolute;
+  top: 0;
+  left: 0;
+  right:0;
+  bottom:0;
+}
+#panes {
+  position:relative;
+  height:100%;
+  width:100%;
+  top:17px;
+}
+
+#tools {
+  font-size:80%;
+}
+
+</style>
 </head>
 <body>
-
+<div id="all">
+<div id="tools">
+  <div style="float:left;margin-left:1em;">Webbed</div>
+  <div style="float:left;margin-left:1em;"><img src="image/save.png"/></div>
+</div>
+<div id="panes">
 <pre id="editor">class System {
   def name = "System"
 }</pre>
 <pre id="logs">logs here
 </pre>
-
-    
+</div>
+</div>
+  
 <script src="ace/ace.js" type="text/javascript" charset="utf-8"></script>
 <script>
     var editor = ace.edit("editor");
