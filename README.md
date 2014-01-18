@@ -1,6 +1,4 @@
 webbed
-======
+====================
 
-Simple browser based IDE for scala using sbt
-
-Status: *pre-alpha*
+Minimalist online Scala IDE using PlayFramework 2 and WebSockets
