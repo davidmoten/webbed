@@ -12,40 +12,38 @@ import play.api.libs.iteratee.Concurrent
 
 object Application extends Controller {
 
-//  def index = Action {
-//    Redirect(routes.Application.tasks)
-//  }
-  
-  def index = WebSocket.using[String] { request => 
-  
-  val (out,channel) = Concurrent.broadcast[String]
-  val in = Iteratee.foreach[String] {
-    msg =>
-      channel.push(msg)
+  def index = Action {
+    Redirect(routes.Application.tasks)
   }
-  (in, out)
-}
+
+  def ws = WebSocket.using[String] { request =>
+
+    val (out, channel) = Concurrent.broadcast[String]
+    val in = Iteratee.foreach[String] {
+      msg =>
+        channel.push(msg)
+    }
+    (in, out)
+  }
 
   def tasks = Action {
     Ok(views.html.index(Task.all(), taskForm))
   }
 
-def deleteTask(id: Long) = Action {
-  Task.delete(id)
-  Redirect(routes.Application.tasks)
-}
+  def deleteTask(id: Long) = Action {
+    Task.delete(id)
+    Redirect(routes.Application.tasks)
+  }
 
-	def newTask = Action { implicit request =>
-	  taskForm.bindFromRequest.fold(
-		errors => BadRequest(views.html.index(Task.all(), errors)),
-		label => {
-		  Task.create(label)
-		  Redirect(routes.Application.tasks)
-		}
-	  )
-	}
+  def newTask = Action { implicit request =>
+    taskForm.bindFromRequest.fold(
+      errors => BadRequest(views.html.index(Task.all(), errors)),
+      label => {
+        Task.create(label)
+        Redirect(routes.Application.tasks)
+      })
+  }
 
   val taskForm = Form(
-    "label" -> nonEmptyText
-  )
+    "label" -> nonEmptyText)
 }
