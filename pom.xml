@@ -30,26 +30,17 @@
 		</dependency>
 		<dependency>
 			<groupId>com.typesafe.play</groupId>
-			<artifactId>play-jdbc_${play2-scala.version}</artifactId>
-			<version>${play2.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.typesafe.play</groupId>
-			<artifactId>anorm_${play2-scala.version}</artifactId>
-			<version>${play2.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.typesafe.play</groupId>
 			<artifactId>play-test_${play2-scala.version}</artifactId>
 			<version>${play2.version}</version>
 			<scope>test</scope>
 		</dependency>
+    <!-- 
 		<dependency>
 			<groupId>com.novocode</groupId>
 			<artifactId>junit-interface</artifactId>
 			<version>0.10</version>
 			<scope>test</scope>
-		</dependency>
+		</dependency>  -->
 	</dependencies>
 	<build>
 		<sourceDirectory>${basedir}/app</sourceDirectory>
